@@ -118,3 +118,12 @@ func TestCanMergeBetweenThrees(t *testing.T) {
 		t.Error("Between threes that are greater than 3 should be able to merge only equal value self")
 	}
 }
+
+func TestShouldMergeTwoThreeToOne(t *testing.T) {
+	one := GetThree(1)
+	two := GetThree(2)
+
+	if one.Merge(two) != GetThree(3) {
+		t.Error("To merge 1 and 2 should be 3")
+	}
+}

@@ -3,6 +3,7 @@ package libthrees
 import (
 	"math"
 	"strconv"
+	"fmt"
 )
 
 type three struct {
@@ -70,6 +71,22 @@ func (t three) CanMerge(other three) bool {
 		return other.value == 1
 	default:
 		return t.value == other.value
+	}
+}
+
+func (t three) Merge(other three) three {
+
+	if !t.CanMerge(other) {
+		panic(fmt.Sprintf("Do not merge with %s", other))
+	}
+
+	switch t.value {
+	case 1:
+		fallthrough
+	case 2:
+		return GetThree(3)
+	default:
+		return GetThree(t.base + 1)
 	}
 }
 
