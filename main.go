@@ -8,6 +8,7 @@ import (
 	"math/rand"
 	"fmt"
 	"strings"
+	"time"
 )
 
 const (
@@ -31,6 +32,9 @@ func initialize() {
 	cmd.Run()
 
 	goansi.HideCursor()
+
+	now := time.Now()
+	rand.Seed(now.Unix())
 
 	updateNextCard()
 }
