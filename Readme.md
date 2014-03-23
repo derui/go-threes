@@ -1,5 +1,5 @@
 # What about? #
-This package is a clone of [https://play.google.com/store/apps/details?id=vo.threes.exclaim](Threes!).
+This package is a clone of [Threes!](https://play.google.com/store/apps/details?id=vo.threes.exclaim).
 
 ## Installation ##
 go-threes is now only self install with golang toolchain...
