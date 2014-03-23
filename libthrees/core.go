@@ -1,50 +1,50 @@
 package libthrees
 
 import (
+	"fmt"
 	"math"
 	"strconv"
-	"fmt"
 )
 
-type three struct {
+type Three struct {
 	value int
-	base int
+	base  int
 }
 
-func empty() three {
-	return three{0, 0}
+func empty() Three {
+	return Three{0, 0}
 }
 
-func (t three) IsEmpty() bool {
+func (t Three) IsEmpty() bool {
 	return t.value == 0 && t.base == 0
 }
 
-func GetThree(num int) three {
+func GetThree(num int) Three {
 	if num <= 0 {
 		return empty()
 	}
 
 	switch num {
 	case 1:
-		fallthrough;
+		fallthrough
 	case 2:
-		return three{num, 0}
+		return Three{num, 0}
 	default:
-		break;
+		break
 	}
 
-	return three{3 * int(math.Floor(math.Pow(2., float64(num - 3)))), num - 3}
+	return Three{3 * int(math.Floor(math.Pow(2., float64(num-3)))), num - 3}
 }
 
-func (t three) String() string {
+func (t Three) String() string {
 	return strconv.Itoa(t.value)
 }
 
-func (t three) Value() int {
+func (t Three) Value() int {
 	return t.value
 }
 
-func (t three) Score() int {
+func (t Three) Score() int {
 
 	if t.IsEmpty() {
 		return 0
@@ -59,11 +59,12 @@ func (t three) Score() int {
 		break
 	}
 
-	pow := math.Floor(math.Pow(3., float64(t.base + 1)))
+	pow := math.Floor(math.Pow(3., float64(t.base+1)))
 	return int(pow)
 }
 
-func (t three) CanMerge(other three) bool {
+func (t Three) CanMerge(other Three) bool {
+
 	switch t.value {
 	case 1:
 		return other.value == 2
@@ -74,7 +75,7 @@ func (t three) CanMerge(other three) bool {
 	}
 }
 
-func (t three) Merge(other three) three {
+func (t Three) Merge(other Three) Three {
 
 	if !t.CanMerge(other) {
 		panic(fmt.Sprintf("Do not merge with %s", other))
@@ -86,13 +87,6 @@ func (t three) Merge(other three) three {
 	case 2:
 		return GetThree(3)
 	default:
-		return GetThree(t.base + 1)
+		return GetThree(3 + t.base + 1)
 	}
 }
-
-
-
-
-
-
-

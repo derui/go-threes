@@ -13,7 +13,7 @@ type Accessor interface {
 // 値を含めたアクセッサ
 type ValueDefiner interface {
 	Accessor
-	Value() three
+	Value() Three
 }
 
 // ある位置を表すための構造体
@@ -34,11 +34,15 @@ func (t *Pos) String() string {
 	return fmt.Sprintf("(%d,%d)", t.x, t.y)
 }
 
+func GetPos(x, y int) Pos {
+	return Pos{x, y}
+}
+
 // ある位置と値をまとめて表現するための構造体
 type PosValue struct {
-	x int
-	y int
-	value three
+	x     int
+	y     int
+	value Three
 }
 
 func (t *PosValue) X() int {
@@ -49,6 +53,6 @@ func (t *PosValue) Y() int {
 	return t.y
 }
 
-func (t *PosValue) Value() three {
+func (t *PosValue) Value() Three {
 	return t.value
 }

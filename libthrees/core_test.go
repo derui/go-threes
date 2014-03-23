@@ -1,30 +1,29 @@
 package libthrees
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
-
 var emptyMap = map[int]bool{
-	0 : true,
-	1 : false,
-	2 : false,
-	3 : false,
-	4 : false,
-	5 : false,
-	6 : false,
-	7 : false,
-	8 : false,
-	9 : false,
-	10 : false,
-	11 : false,
-	12 : false,
+	0:  true,
+	1:  false,
+	2:  false,
+	3:  false,
+	4:  false,
+	5:  false,
+	6:  false,
+	7:  false,
+	8:  false,
+	9:  false,
+	10: false,
+	11: false,
+	12: false,
 }
 
 func TestCanDetectEmptyThree(t *testing.T) {
 
-	for k,v := range(emptyMap) {
+	for k, v := range emptyMap {
 		emp := GetThree(k)
 
 		if emp.IsEmpty() != v {
@@ -34,24 +33,24 @@ func TestCanDetectEmptyThree(t *testing.T) {
 }
 
 var threeMap = map[int]int{
-	0 : 0,
-	1 : 1,
-	2 : 2,
-	3 : 3,
-	4 : 6,
-	5 : 12,
-	6 : 24,
-	7 : 48,
-	8 : 96,
-	9 : 192,
-	10 : 384,
-	11 : 768,
-	12 : 1536,
+	0:  0,
+	1:  1,
+	2:  2,
+	3:  3,
+	4:  6,
+	5:  12,
+	6:  24,
+	7:  48,
+	8:  96,
+	9:  192,
+	10: 384,
+	11: 768,
+	12: 1536,
 }
 
 func TestCanGetThreesWithNum(t *testing.T) {
 
-	for k, v := range(threeMap) {
+	for k, v := range threeMap {
 		if GetThree(k).Value() != v {
 			t.Errorf("Getting threes value with %d should be %d, but getting %d",
 				k, v, GetThree(k))
@@ -61,7 +60,7 @@ func TestCanGetThreesWithNum(t *testing.T) {
 
 func TestCanThreesToString(t *testing.T) {
 
-	for k, v := range(threeMap) {
+	for k, v := range threeMap {
 		tv := GetThree(k)
 		if fmt.Sprint(tv) != fmt.Sprintf("%d", v) {
 			t.Errorf("Getting threes as string with %d should be %s, but getting %s",
@@ -71,25 +70,24 @@ func TestCanThreesToString(t *testing.T) {
 }
 
 var scoreMap = map[int]int{
-	0 : 0,
-	1 : 0,
-	2 : 0,
-	3 : 3,
-	4 : 9,
-	5 : 27,
-	6 : 81,
-	7 : 243,
-	8 : 729,
-	9 : 2187,
-	10 : 6561,
-	11 : 19683,
-	12 : 59049,
+	0:  0,
+	1:  0,
+	2:  0,
+	3:  3,
+	4:  9,
+	5:  27,
+	6:  81,
+	7:  243,
+	8:  729,
+	9:  2187,
+	10: 6561,
+	11: 19683,
+	12: 59049,
 }
-
 
 func TestCanGetScoreOfAThree(t *testing.T) {
 
-	for k,v := range(scoreMap) {
+	for k, v := range scoreMap {
 		tv := GetThree(k)
 
 		if tv.Score() != v {
